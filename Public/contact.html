@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - SnapLocate</title>
+
+   <!-- External Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+
+<body>
+
+   <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html"><h2>SnapLocate</h2></a>
+    <a href="index.html">🏠 Home</a>
+    <a href="professor.html">👨‍🏫 Professors</a>
+    <a href="classroom.html">🏫 Classrooms</a>
+    <a href="academic.html">📚 Academic</a>
+    <a href="academic-calendar.html">📅 Calendar</a>
+    <a href="hotspot.html">📡 Wi-Fi</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="about.html">ℹ️ About Us</a>
+      <!-- Tagline at bottom -->
+  <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+ <!-- Main Page Content -->
+   <div class="content-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <a href="index.html"><span>SnapLocate</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="professor.html">Professors</a>
+        <a href="classroom.html">Classrooms</a>
+        <a href="academic.html">Academic</a>
+      </nav>
+    </header>
+
+<main class="contact-container">
+  <section class="contact-hero">
+    <h1>Contact Us</h1>
+    <p>Have a question or feedback about SnapLocate? Reach out and we’ll be happy to help!</p>
+  </section>
+
+  <div class="contact-content">
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <p id="formStatus"></p>
+    </form>
+
+    <div class="contact-info">
+      <h3>Reach Us</h3>
+      <p><strong>Email:</strong> <span class="email-text">snaplocate.team@gmail.com</span>
+      <button class="copy-btn" title="Copy Email">📋</button></p>
+      <p><strong>Address:</strong> Thapar Campus, Patiala, India</p>
+      <p><strong>Response Time :</strong> <br> "We typically respond within 24 hours"</p>
+      <div class="social-links">
+         <!-- <p>Follow us on <a href="#" class="link-style">instagram</a> </p>
+        <p>Connect on <a href="#" class="link-style">LinkedIn</a> </p> -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>SnapLocate</h2>
+      <p>“Every question starts a conversation, and every conversation shapes a better SnapLocate”</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="academic.html">Academic</a></li>
+          <li><a href="professor.html">Professors</a></li>
+          <li><a href="classroom.html">Classrooms</a></li>
+        </ul>
+      </div>
+       <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+           <li><a href="contact.html">Help Desk</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ✅ External Firebase + Logic Script -->
+ <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+<script type="module" src="contact.js"></script>
+ <script type="module" src="/firebase-config.js"></script>
+  <script type="module" src="/analytics.js"></script>
+</body>
+</html>

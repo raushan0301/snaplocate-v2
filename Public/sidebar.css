@@ -1,0 +1,125 @@
+/* Sidebar base */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full height */
+  width: 240px;
+  background-color: #111;
+  color: #fff;
+  padding: 4.2rem 1rem 1rem 1rem;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Enables pushing tagline to bottom */
+  
+}
+
+/* Title */
+.sidebar h2 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Links */
+.sidebar a {
+  display: block;
+  color: #ddd;
+  padding: 10px 0;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar a:hover {
+  background-color: #333;
+}
+
+/* Main content shifts to the right */
+.main-content {
+  margin-left: 240px;
+  padding: 1rem;
+}
+
+/* Tagline section — flex handles positioning */
+.sidebar-tagline {
+   margin-top: auto;/* Push to bottom */
+  text-align: center;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+
+  /* Safari font & rendering fixes */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-fill-color: initial;
+  transform: translateZ(0); /* Prevents Safari text clipping */
+}
+
+.sidebar-tagline h3 {
+  font-size: 0.95rem;
+  font-weight: normal;
+  color: #aaa;
+  margin: 0;
+}
+
+/* Hamburger menu for mobile */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  z-index: 1100;
+  background-color: #111;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+}
+
+/* Prevent overlap below 400px */
+@media (max-width: 400px) {
+  .menu-toggle {
+    left: 0.8rem;
+    top: 0.8rem;
+    padding: 6px 10px;
+    font-size: 1.4rem;
+  }
+
+  .sidebar {
+    padding-top: 4rem; /* Keep space below toggle */
+  }
+}
+
+@media(min-width:768px){
+  .sidebar {
+  padding-top: 0.5rem; /* Reduce or set to 0 to move content up */
+}
+
+.sidebar h2 {
+  color: #fff;
+  margin-top: 0; /* Already fine */
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | SnapLocate</title>
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="about.css" />
+</head>
+<body>
+
+    <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index"><h2>SnapLocate</h2></a>
+    <a href="index">🏠 Home</a>
+    <a href="professor">👨‍🏫 Professors</a>
+    <a href="classroom">🏫 Classrooms</a>
+    <a href="academic">📚 Academic</a>
+    <a href="academic-calendar">📅 Calendar</a>
+    <a href="hotspot">📡 Wi-Fi</a>
+    <a href="contact">📞 Contact</a>
+    <a href="about">ℹ️ About Us</a>
+      <!-- Tagline at bottom -->
+  <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+  <div class="content-wrapper">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <a href="index"><h1>SnapLocate</h1></a>
+    <p>Empowering students to effortlessly locate professors, classrooms, and more within their academic world.</p>
+  </section>
+
+  <!-- Founder Section -->
+  <section class="founder">
+    <img src="image.jpeg" alt="Founder Photo" class="founder-img"/>
+    <div class="founder-details">
+      <h2>Raushan Raj</h2>
+      <p> Developer</p>
+      <p>I'm a passionate solo developer behind SnapLocate, building everything from backend to frontend to make campus navigation effortless for students.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/_.raushan_singh_?igsh=d3hmdDZzaDR6MXkz" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/raushan-raj-3a7740243?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Quote -->
+  <section class="founder-quote">
+    <div class="quote-box">
+      <!-- <img src="#" alt="Quote Decoration" class="quote-bg" /> -->
+      <blockquote>
+        “My mission with SnapLocate is simple — to empower every student with the clarity and confidence to navigate academic life with ease and precision.”
+        <span>— Raushan Raj, SnapLocate</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- More Info -->
+  <section class="more-about">
+    <h2>My Story</h2>
+    <p>SnapLocate began as a personal project at Thapar University to simplify how students access critical campus information. With real-time faculty listings, classroom locations, and academic tools, it bridges the gap between physical space and digital clarity.</p>
+
+    <h2>My Mission</h2>
+    <p>To transform how students interact with their campus-making it more user-friendly, accessible, and digitally connected.</p>
+
+    <h2>Leadership</h2>
+    <p>SnapLocate is led by a single independent developer, committed to continual innovation, open feedback, and meaningful impact in academic life.</p>
+  </section>
+
+ 
+ <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>SnapLocate</h2>
+      <p>"Every idea starts with a need”</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index">Home</a></li>
+          <li><a href="academic">Academic</a></li>
+          <li><a href="professor">Professors</a></li>
+          <li><a href="classroom">Classrooms</a></li>
+          
+        </ul>
+      </div>
+      <!-- <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Our Mission</a></li>
+          <li><a href="#">Leadership</a></li>
+        </ul>
+      </div> -->
+       <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Help Desk</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+  </div>
+</footer>
+</div>
+    <!-- Scripts -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+   <script type="module" src="/firebase-config.js"></script>
+  <script type="module" src="/analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+/* ===== Safari/iOS Flip Card Fix ===== */
+@supports (-webkit-touch-callout: none) {
+
+  /* Ensure perspective works */
+  .card-3d {
+    perspective: 1000px;
+    -webkit-perspective: 1000px; /* Safari/iOS */
+  }
+
+  /* Inner container for flipping */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.15s ease-in-out !important;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d; /* Safari/iOS */
+  }
+
+  /* Trigger flip via hover or JS class */
+  .card-3d:hover .card-inner,
+  .card-3d.flip-active .card-inner {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari/iOS */
+  }
+
+  /* Front and back faces */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden; /* Safari/iOS */
+  }
+
+  /* Back face flipped */
+  .card-back {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg); /* Safari/iOS */
+  }
+
+  /* Optional: prevent flicker on Safari */
+  .card-inner, .card-front, .card-back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+}

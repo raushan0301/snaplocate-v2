@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classroom Directory</title>
+
+   <!-- External Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="classroompage.css">
+  <link rel="stylesheet" href="safari-fix.css" media="screen and (-webkit-min-device-pixel-ratio:0)">
+</head>
+<body>
+
+  <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html"><h2>SnapLocate</h2></a>
+    <a href="index.html">🏠 Home</a>
+    <a href="professor.html">👨‍🏫 Professors</a>
+    <a href="classroom.html">🏫 Classrooms</a>
+    <a href="academic.html">📚 Academic</a>
+    <a href="academic-calendar.html">📅 Calendar</a>
+    <a href="hotspot.html">📡 Wi-Fi</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="about.html">ℹ️ About Us</a>
+     <!-- Tagline at bottom -->
+  <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+ <!-- Main Page Content -->
+   <div class="content-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <a href="index.html"><span>SnapLocate</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="professor.html">Professors</a>
+        <a href="classroom.html">Classrooms</a>
+        <a href="academic.html">Academic</a>
+      </nav>
+    </header>
+
+<main class="content">
+  <section class="hero">
+    <div>
+      <h1>Navigate Your Campus</h1>
+      <h2>Explore the rooms where ideas come to life - from lecture halls to labs, all at your fingertips.</h2>
+    </div> 
+  </section>
+
+  <div class="intro-section">
+    <div class="intro-text">
+      <p>Welcome to the SnapLocate Classroom Finder - your intelligent assistant for exploring Thapar University learning spaces. Whether it’s a lecture hall, lab, or tutorial room, easily locate your classroom by building, floor, or type - and never be late again.</p>
+    </div>
+    <div class="intro-image">
+      <img src="Classroomm.jpeg" alt="Classrooms" width="100%" height="100%">
+    </div>
+  </div>
+
+  <div class="card-section-header">
+    <h3 class="card-section-title">Thapar University Classrooms</h3>
+    <p class="card-section-description">Hover over any card to reveal class type, floor, capacity, air-conditioning status, and more.</p>
+  </div>
+
+  <!-- 🔍 Search -->
+  <div class="search-container">
+    <input
+      type="text"
+      id="classroomSearchInput"
+      placeholder="Search by room no, lab code, building, floor or class type"
+      class="classroomSearch-Input"
+    />
+  </div>
+
+  <!-- ❗ No Classroom Found Message -->
+  <div id="noClassroomResults" style="text-align: center; display: none; color: #888;">
+    Sorry, we couldn’t find any results. Please try a different keyword.
+  </div>
+
+  <!-- 🌀 Loading Spinner -->
+<div id="classroomLoader" style="display: none; text-align: center; margin: 20px;">
+  <p>Just a moment — loading your classrooms..</p>
+</div>
+  
+  <!-- 📦 Classrooms Cards Container -->
+  <div class="card-container" id="classroomCardContainer"></div>
+
+  <!-- 👇 Show More Button -->
+
+<div class="show-more-wrapper">
+  <button id="showMoreBtn" class="show-more-btn">Show More Classrooms</button>
+  </div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>SnapLocate</h2>
+      <p>“Classrooms aren't just rooms - they're where future ideas take shape.”</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="academic.html">Academic</a></li>
+          <li><a href="professor.html">Professors</a></li>
+          <li><a href="classroom.html">Classrooms</a></li>
+          
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Help Desk</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+   <div class="footer-bottom">
+    <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+<script type="module" src="script.js"></script>
+ <script type="module" src="/firebase-config.js"></script>
+  <script type="module" src="/analytics.js"></script>
+
+</body>
+</html>

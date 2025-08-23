@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professor Directory</title>
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="professorPage.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="safari-fix.css" media="screen and (-webkit-min-device-pixel-ratio:0)">
+</head>
+
+<body>
+  <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html"><h2>SnapLocate</h2></a>
+    <a href="index.html">🏠 Home</a>
+    <a href="professor.html">👨‍🏫 Professors</a>
+    <a href="classroom.html">🏫 Classrooms</a>
+    <a href="academic.html">📚 Academic</a>
+    <a href="academic-calendar.html">📅 Calendar</a>
+    <a href="hotspot.html">📡 Wi-Fi</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="about.html">ℹ️ About Us</a>
+      <!-- Tagline at bottom -->
+  <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+<!-- Main Page Content -->
+   <div class="content-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <a href="index.html"><span>SnapLocate</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="professor.html">Professors</a>
+        <a href="classroom.html">Classrooms</a>
+        <a href="academic.html">Academic</a>
+      </nav>
+    </header>
+
+<main class="content">
+  <section class="hero">
+    <h1 class="main-title">Meet the Mentors</h1>
+    <h2 class="subtitle">Explore detailed profiles of Thapar faculty - mentors who are shaping the minds and future of tomorrow.</h2>
+  </section>
+
+  <div class="intro-section">
+    <div class="intro-text">
+      <p>Discover the brilliant minds behind academic excellence at TIET. Know about their research areas, teaching experience, department, and more-all in one organized and accessible place.</p>
+    </div>
+    <div class="intro-image">
+      <img src="Academic Block.jpg" alt="Professors">
+    </div>
+  </div>
+
+  <div class="card-section-header">
+    <h3 class="card-section-title">Thapar’s Expert Faculty</h3>
+    <p class="card-section-description">Hover over a card to flip it and reveal details such as the Department, Expertise, and Cabin Information.</p>
+  </div>
+
+  <!-- 🔍 Search Bar -->
+  <div class="search-container">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search by name, department or specialization" 
+      class="search-input"
+    />
+  </div>
+
+    <div id="professorCardContainer" class="card-container"></div>
+    <div id="noResults" style="text-align: center; margin-top: 15px; display: none;">
+    No professors found.
+    </div>
+
+    <div class="show-more-wrapper">
+  <button id="showMoreBtn" class="show-more-btn">Show More Professors</button>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <h2>SnapLocate</h2>
+      <p>"Empowering Thapar students to connect with mentors and navigate learning spaces effortlessly"</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="academic.html">Academic</a></li>
+          <li><a href="professor.html">Professors</a></li>
+          <li><a href="classroom.html">Classrooms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Help Desk</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+   <div class="footer-bottom">
+    <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ✅ External Firebase + Logic Script -->
+ <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+<script type="module" src="script.js"></script>
+ <script type="module" src="/firebase-config.js"></script>
+ <script type="module" src="/analytics.js"></script>
+</body>
+</html>

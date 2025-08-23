@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academic Resources</title>
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link rel="stylesheet" href="academic.css" />
+</head>
+<body>
+  <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="index.html"><h2>SnapLocate</h2></a>
+    <a href="index.html">🏠 Home</a>
+    <a href="professor.html">👨‍🏫 Professors</a>
+    <a href="classroom.html">🏫 Classrooms</a>
+    <a href="academic.html">📚 Academic</a>
+    <a href="academic-calendar.html">📅 Calendar</a>
+    <a href="hotspot.html">📡 Wi-Fi</a>
+    <a href="contact.html">📞 Contact</a>
+    <a href="about.html">ℹ️ About Us</a>
+     <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+  <!-- Main Page Content -->
+  <div class="content-wrapper">
+    <header class="navbar">
+      <div class="logo">
+        <a href="index.html"><span>SnapLocate</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="professor.html">Professors</a>
+        <a href="classroom.html">Classrooms</a>
+        <a href="academic.html">Academic</a>
+      </nav>
+    </header>
+
+    <main class="content">
+      <!-- 🔹 Hero Banner -->
+      <section class="hero">
+        <h1 class="main-title">Study Smarter at Thapar</h1>
+        <h2 class="subtitle">Find notes, lab manuals, PYQs, and playlists - organized by year, branch, and semester.</h2>
+      </section>
+
+      <!-- 🔹 Intro Section with Image -->
+      <div class="intro-section">
+        <div class="intro-text">
+          <p>
+            Welcome to SnapLocate’s Academic Resources - your all-in-one hub to explore high-quality notes, PYQs, tutorials, lab manuals, and suggested playlists. Find what you need by year, branch, and semester - and rate what helped you most!
+            <br><br>
+            <p>Have better notes or tutorials? Contact <a href="contact.html" class="link-style">here</a> and get credited!</p>
+          </p>
+        </div>
+        <div class="intro-image">
+          <img src="Library.jpg" alt="Academic Resources" />
+        </div>
+      </div>
+
+      <!-- 🔹 Card Section Header -->
+      <div class="card-section-header">
+        <h3 class="card-section-title">Thapar Resource Library</h3>
+        <p class="card-section-description">Review and rate academic content to help fellow Thapar students choose the best resources.</p>
+      </div>
+
+      <!-- 🔹 Dropdown Filters -->
+      <div class="search-container">
+        <select id="yearSelect" class="search-input"></select>
+        <select id="semesterSelect" class="search-input"></select>
+        <select id="branchSelect" class="search-input"></select>
+        <select id="subjectSelect"class="search-input"></select>
+
+      </div>
+
+      <!-- 🔹 Injected Academic Card from academic.js -->
+      <div id="academic-container"></div>
+
+    </main>
+
+    <!-- 🔹 Footer Section -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Left Branding -->
+        <div class="footer-left">
+          <h2>SnapLocate</h2>
+          <p>"Fuel your grades with the right tools - study smart, not hard"</p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-links">
+          <div>
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="academic.html">Academic</a></li> 
+              <li><a href="professor.html">Professors</a></li>
+              <li><a href="classroom.html">Classrooms</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Support</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Help Desk</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+       <div class="footer-bottom">
+    <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+  </div>
+    </footer>
+  </div>
+
+  <!-- Sidebar Toggle JS -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+
+  <!-- Academic.js Module -->
+  <script type="module" src="academic.js"></script>
+   <script type="module" src="/firebase-config.js"></script>
+  <script type="module" src="/analytics.js"></script>
+</body>
+</html>

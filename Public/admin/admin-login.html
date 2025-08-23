@@ -1,0 +1,82 @@
+<!-- admin-login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SnapLocate Admin Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f8f8f8;
+      margin: 0;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px;
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>SnapLocate Admin Login</h2>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button id="login-btn">Login</button>
+
+  <script type="module">
+  import { auth } from './firebase-config.js';
+  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const loginBtn = document.getElementById("login-btn");
+
+  function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!email || !password) {
+      alert("Please enter email and password.");
+      return;
+    }
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logging in...";
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        window.location.href = "admin.html"; // ✅ Redirect after login
+      })
+      .catch((error) => {
+        alert("Login Failed: " + error.message);
+      })
+      .finally(() => {
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Login";
+      });
+  }
+
+  loginBtn.addEventListener("click", login);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      login();
+    }
+  });
+</script>
+</body>
+</html>

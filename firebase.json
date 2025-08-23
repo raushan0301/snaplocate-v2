@@ -30,12 +30,24 @@
         "destination": "/index.html"
       },
       {
+        "source": "index",
+        "destination": "/index.html"
+      },
+      {
         "source": "/academic-calendar",
         "destination": "/academic-calendar.html"
       },
         {
         "source": "/about",
         "destination": "/about.html"
+      },
+         {
+        "source": "/hotspot",
+        "destination": "/hotspot.html"
+      },
+         {
+        "source": "/contact",
+        "destination": "/contact.html"
       }
     ]
   }

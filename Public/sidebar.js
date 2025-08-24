@@ -41,25 +41,35 @@ window.toggleSidebar = function () {
 
 
 
-// Highlight active navbar & sidebar links
-const allLinks = document.querySelectorAll(".nav-links a, .sidebar a");
-let currentPath = window.location.pathname.split("/").filter(Boolean).pop() || "index";
 
-// Handle Firebase-style clean URLs (no .html in href)
-if (!currentPath.includes(".")) {
-  currentPath += ".html";  // convert "academic" → "academic.html"
-}
 
-allLinks.forEach(link => {
-  let linkPath = link.getAttribute("href");
 
-  // Normalize both href and current path
-  let normalizedLink = linkPath.replace(/^\//, ""); // remove leading /
-  if (!normalizedLink.includes(".")) {
-    normalizedLink += ".html";  // e.g. "/academic" → "academic.html"
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ Highlight script loaded");
+
+  const allLinks = document.querySelectorAll(".nav-links a, .sidebar a");
+
+  let currentPath = window.location.pathname.split("/").pop() || "index.html";
+  if (!currentPath.endsWith(".html")) {
+    currentPath += ".html";
   }
+  console.log("👉 Normalized currentPath =", currentPath);
 
-  if (normalizedLink === currentPath) {
-    link.classList.add("active");
-  }
+  allLinks.forEach(link => {
+    let href = link.getAttribute("href") || "";
+
+    // Skip logo link
+    if (link.querySelector("h2")) return;
+
+    href = href.replace(/^\//, "");
+    let normalizedHref = href.endsWith(".html") ? href : href + ".html";
+
+    console.log(`Checking ${normalizedHref} vs ${currentPath}`);
+
+    if (normalizedHref === currentPath) {
+      link.classList.add("active");
+    }
+  });
 });
+

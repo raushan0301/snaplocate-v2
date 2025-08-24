@@ -125,10 +125,11 @@
 }
 
 
-
-/* Active link highlight */
 .sidebar a.active {
-  background:linear-gradient(to right, #000000, #0b2255); /* highlight background */
-  color: #fff; /* highlight text */
-  font-weight: bold;      /* optional */
+  background: linear-gradient(to right, #000000, #0b2255) !important;
+  color: #fff !important;
+  font-weight: bold;
+  border-radius: 8px; /* optional */
 }
+
+

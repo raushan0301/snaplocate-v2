@@ -286,6 +286,9 @@ allLinks.forEach(link => {
   let href = link.getAttribute("href");
   if (!href) return;
 
+  // Skip logo link
+if (link.querySelector("h2")) return;
+
   // Remove leading/trailing slashes
   let normalizedHref = href.replace(/^\/|\/$/g, "");
   if (!normalizedHref.endsWith(".html")) {

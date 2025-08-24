@@ -123,3 +123,12 @@
   font-size: 1.5rem;
 }
 }
+
+
+
+/* Active link highlight */
+.sidebar a.active {
+  background:linear-gradient(to right, #000000, #0b2255); /* highlight background */
+  color: #fff; /* highlight text */
+  font-weight: bold;      /* optional */
+}

@@ -38,3 +38,28 @@ window.toggleSidebar = function () {
   document.querySelector('.sidebar').classList.toggle('show');
   document.querySelector('.overlay')?.classList.toggle('active');
 };
+
+
+
+// Highlight active navbar & sidebar links
+const allLinks = document.querySelectorAll(".nav-links a, .sidebar a");
+let currentPath = window.location.pathname.split("/").filter(Boolean).pop() || "index";
+
+// Handle Firebase-style clean URLs (no .html in href)
+if (!currentPath.includes(".")) {
+  currentPath += ".html";  // convert "academic" → "academic.html"
+}
+
+allLinks.forEach(link => {
+  let linkPath = link.getAttribute("href");
+
+  // Normalize both href and current path
+  let normalizedLink = linkPath.replace(/^\//, ""); // remove leading /
+  if (!normalizedLink.includes(".")) {
+    normalizedLink += ".html";  // e.g. "/academic" → "academic.html"
+  }
+
+  if (normalizedLink === currentPath) {
+    link.classList.add("active");
+  }
+});

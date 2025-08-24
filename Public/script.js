@@ -269,19 +269,33 @@ if (classroomCardContainer) {
 
 
 
+// Highlight active link in navbar, sidebar, and footer
+const allLinks = document.querySelectorAll("a");
 
-// Highlight active navbar link
-const navLinks = document.querySelectorAll(".nav-links a");
-let currentPath = window.location.pathname.split("/").filter(Boolean).pop() || "index";
+// Get the current file name (ignore folders like "Public/")
+let currentPath = window.location.pathname.split("/").pop() || "index.html";
 
-// Handle Firebase clean URLs (no .html)
+// If no extension, normalize to .html
 if (!currentPath.includes(".")) {
-  currentPath += ".html";  // convert "academic" → "academic.html"
+  currentPath += ".html";
 }
 
-// Compare against your HTML hrefs
-navLinks.forEach(link => {
-  if (link.getAttribute("href") === currentPath) {
+console.log("Fixed currentPath →", currentPath);
+
+allLinks.forEach(link => {
+  let href = link.getAttribute("href");
+  if (!href) return;
+
+  // Remove leading/trailing slashes
+  let normalizedHref = href.replace(/^\/|\/$/g, "");
+  if (!normalizedHref.endsWith(".html")) {
+    normalizedHref += ".html";
+  }
+
+  console.log("Checking:", href, "→", normalizedHref);
+
+  if (normalizedHref === currentPath) {
+    console.log("✅ Match found →", href);
     link.classList.add("active");
   }
 });
@@ -291,11 +305,7 @@ navLinks.forEach(link => {
 
 
 
-
-
 // Flip cards on click (works on desktop + iOS Safari)
-
-
 
 document.addEventListener("pointerdown", (e) => {
   const clickedCard = e.target.closest(".card-3d");

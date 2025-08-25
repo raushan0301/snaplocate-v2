@@ -6,10 +6,10 @@
   <title>Professor Directory</title>
 
   <!-- External Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="professorPage.css" />
-  <link rel="stylesheet" href="sidebar.css" />
-  <link rel="stylesheet" href="safari-fix.css" media="screen and (-webkit-min-device-pixel-ratio:0)">
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./professorPage.css" />
+  <link rel="stylesheet" href="./sidebar.css" />
+  <link rel="stylesheet" href="./safari-fix.css" media="screen and (-webkit-min-device-pixel-ratio:0)">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
   <aside class="sidebar" id="sidebar">
      <a href="./index.html"><h2>SnapLocate</h2></a>
     <a href="./index.html">🏠 Home</a>
-    <a href="./professor.html">👨‍🏫 Professors</a>
+    <a href="/professor.html">👨‍🏫 Professors</a>
     <a href="./classroom.html">🏫 Classrooms</a>
     <a href="./academic.html">📚 Academic</a>
     <a href="./academic-calendar.html">📅 Calendar</a>
@@ -40,7 +40,7 @@
         <a href="./index.html"><span>SnapLocate</span></a>
       </div>
       <nav class="nav-links">
-        <a href="./professor.html">Professors</a>
+        <a href="/professor.html">Professors</a>
         <a href="./classroom.html">Classrooms</a>
         <a href="./academic.html">Academic</a>
       </nav>
@@ -57,7 +57,7 @@
       <p>Discover the brilliant minds behind academic excellence at TIET. Know about their research areas, teaching experience, department, and more-all in one organized and accessible place.</p>
     </div>
     <div class="intro-image">
-      <img src="Academic Block.jpg" alt="Professors">
+      <img src="./Academic Block.jpg" alt="Professors">
     </div>
   </div>
 
@@ -71,7 +71,7 @@
     <input 
       type="text" 
       id="searchInput" 
-      placeholder="Search by name, department or specialization" 
+      placeholder="Search by name,department or specialization" 
       class="search-input"
     />
   </div>
@@ -100,7 +100,7 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./academic.html">Academic</a></li>
-          <li><a href="./professor.html">Professors</a></li>
+          <li><a href="/professor.html">Professors</a></li>
           <li><a href="./classroom.html">Classrooms</a></li>
         </ul>
       </div>
@@ -118,8 +118,13 @@
     <p>&copy; 2025 SnapLocate. All rights reserved.</p>
   </div>
 </footer>
-
-<!-- ✅ External Firebase + Logic Script -->
+   </div>
+  <!-- Scripts -->
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
    <script type="module" src="./firebase-config.js"></script>
    <script type="module" src="./analytics.js"></script>
    <script type="module" src="./sidebar.js"></script>

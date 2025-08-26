@@ -35,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
 
 // Sidebar toggle for mobile
 window.toggleSidebar = function () {
-  document.querySelector('.sidebar').classList.toggle('show');
+  document.querySelector('.sidebar').classList.toggle('open');
   document.querySelector('.overlay')?.classList.toggle('active');
 };
 

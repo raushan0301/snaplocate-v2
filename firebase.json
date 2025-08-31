@@ -45,6 +45,10 @@
         "source": "/hotspot",
         "destination": "/hotspot.html"
       },
+           {
+        "source": "/campus-support",
+        "destination": "/campus-support.html"
+      },
          {
         "source": "/contact",
         "destination": "/contact.html"

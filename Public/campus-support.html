@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Academic Calendar - SnapLocate</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Campus Support - Dashboard</title>
   <link rel="stylesheet" href="sidebar.css" />
+  
+  <link rel="stylesheet" href="campus-support.css" />
+  <link rel="stylesheet" href="safari-fix.css" media="screen and (-webkit-min-device-pixel-ratio:0)">
 </head>
 <body>
     <!-- Hamburger Toggle for Mobile -->
@@ -13,7 +15,7 @@
 
   <!-- Sidebar Navigation -->
   <aside class="sidebar" id="sidebar">
-   <a href="/index"><h2>SnapLocate</h2></a>
+     <a href="/index"><h2>SnapLocate</h2></a>
     <a href="/index">🏠 Home</a>
     <a href="/professor">👨‍🏫 Professors</a>
     <a href="/classroom">🏫 Classrooms</a>
@@ -21,17 +23,15 @@
     <a href="/academic-calendar">📅 Calendar</a>
     <a href="/hotspot">📡 Wi-Fi</a>
     <a href="/campus-support">📧 Campus-Support</a>
-    
     <a href="/contact">📞 Contact</a>
     <a href="/about">ℹ️ About Us</a>
-      <!-- Tagline at bottom -->
+     <!-- Tagline at bottom -->
   <div class="sidebar-tagline">
     <h3>Just ek click, sab kuch quick!</h3>
   </div>
   </aside>
-
-  <!-- Main Page Content -->
-  <div class="content-wrapper">
+   <!-- Main Page Content -->
+   <div class="content-wrapper">
     <header class="navbar">
       <div class="logo">
         <a href="/index"><span>SnapLocate</span></a>
@@ -42,24 +42,45 @@
         <a href="/academic">Academic</a>
       </nav>
     </header>
-  <div class="calendar-wrapper">
-    <h1>Academic Calendar - 2025 (UG-|)</h1>
-    <div class="calendar-image-container">
-      <img src="Academic calendar 1st year.png" alt="Academic Calendar 2025" class="calendar-image" />
+
+  <section class="hero">
+    <div>
+      <h1>Campus Support</h1>
+      <p>Find the right contact, fast.</p>
+    </div> 
+  </section>
+ 
+
+  <nav id="tabs" class="tabs"></nav>
+
+  <section id="grid" class="grid"></section>
+
+  <section class="hostel-section">
+    <h2>Hostel Directory</h2>
+    <input id="hostelSearch" class="hostel-search" type="text" placeholder="Search hostel name…" />
+    <div class="table-wrap">
+      <table id="hostelTable">
+        <thead>
+          <tr>
+            <th>Hostel</th>
+            <th>Caretaker Email</th>
+            <th>Warden Email</th>
+            <th>Copy</th>
+          </tr>
+        </thead>
+        <tbody><!-- rows injected --></tbody>
+      </table>
     </div>
-    <h1>Academic Calendar - 2025 (UG-II,III,IV and PG) </h1>
-    <div class="calendar-image-container">
-      <img src="Calenders.png" alt="Academic Calendar 2025" class="calendar-image" />
-    </div>
-  </div>
-   <script>
+  </section>
+  <!-- Scripts -->
+  <script>
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('open');
     }
   </script>
-   <script type="module" src="firebase-config.js"></script>
-  <script type="module" src="analytics.js"></script>
+  <script type="module" src="campus-support.js"></script>
+   <script type="module" src="/firebase-config.js"></script>
+  <script type="module" src="/analytics.js"></script>
   <script type="module" src="sidebar.js"></script>
-  <script type="module" src="script.js"></script>
 </body>
 </html>

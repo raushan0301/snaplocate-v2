@@ -19,15 +19,15 @@
   <!-- Sidebar Navigation -->
   <aside class="sidebar" id="sidebar">
     <a href="/index"><h2>SnapLocate</h2></a>
-    <a href="/index"><i class="bi bi-house-heart"></i>  Home</a>
-    <a href="./professor"><i class="bi bi-person-workspace"></i>  Professors</a>
-    <a href="./classroom"><i class="bi bi-buildings"></i>  Classrooms</a>
-    <a href="./academic"><i class="bi bi-book-half"></i>  Academic</a>
-    <a href="./academic-calendar"><i class="bi bi-calendar3"></i>  Calendar</a>
-    <a href="./hotspot"><i class="bi bi-router"></i>  Wi-Fi</a>
-    <a href="./campus-support"><i class="bi bi-envelope-open-heart"></i>  Campus-Support</a>
-    <a href="./contact"><i class="bi bi-telephone"></i>  Contact</a>
-    <a href="./about"><i class="bi bi-info-circle"></i>  About Us</a>
+    <a href="/index" onclick="trackNavigation('home')"><i class="bi bi-house-heart"></i>  Home</a>
+    <a href="./professor" onclick="trackNavigation('professors')"><i class="bi bi-person-workspace"></i>  Professors</a>
+    <a href="./classroom" onclick="trackNavigation('classrooms')"><i class="bi bi-buildings"></i>  Classrooms</a>
+    <a href="./academic" onclick="trackNavigation('academic')"><i class="bi bi-book-half"></i>  Academic</a>
+    <a href="./academic-calendar" onclick="trackNavigation('calendar')"><i class="bi bi-calendar3"></i>  Calendar</a>
+    <a href="./hotspot" onclick="trackNavigation('wifi')"><i class="bi bi-router"></i>  Wi-Fi</a>
+    <a href="./campus-support" onclick="trackNavigation('support')"><i class="bi bi-envelope-open-heart"></i>  Campus-Support</a>
+    <a href="./contact" onclick="trackNavigation('contact')"><i class="bi bi-telephone"></i>  Contact</a>
+    <a href="./about" onclick="trackNavigation('about')"><i class="bi bi-info-circle"></i>  About Us</a>
       <!-- Tagline at bottom -->
   <div class="sidebar-tagline">
     <h3>Just ek click, sab kuch quick!</h3>
@@ -41,9 +41,9 @@
         <a href="/index"><span>SnapLocate</span></a>
       </div>
       <nav class="nav-links">
-        <a href="./professor">Professors</a>
-        <a href="./classroom">Classrooms</a>
-        <a href="./academic">Academic</a>
+        <a href="./professor" onclick="trackNavigation('professors')">Professors</a>
+        <a href="./classroom" onclick="trackNavigation('classrooms')">Classrooms</a>
+        <a href="./academic" onclick="trackNavigation('academic')">Academic</a>
       </nav>
     </header>
 
@@ -53,7 +53,7 @@
     </section>
 
     <section class="info-section" id="info">
-       <a href="./professor" class="info-card-link">
+       <a href="./professor" class="info-card-link" onclick="trackNavigation('professors-card')">
       <div class="info-card">
         <h3>Expert Mentors</h3>
         <p>Quickly look up Professors name, emails, cabin info and specialization.</p>
@@ -61,7 +61,7 @@
       </div>
       </a>
 
-      <a href="./classroom" class="info-card-link">
+      <a href="./classroom" class="info-card-link" onclick="trackNavigation('classrooms-card')">
       <div class="info-card">
         <h3>Classroom Finder</h3>
         <p>Locate any classroom by code and get clear navigation instructions instantly.</p>
@@ -69,7 +69,7 @@
       </div>
       </a>
 
-      <a href="./academic" class="info-card-link">
+      <a href="./academic" class="info-card-link" onclick="trackNavigation('academic-card')">
       <div class="info-card">
         <h3>Academic Resources</h3>
         <p>Find what you need by year, branch, semester and rate what helped you most.</p>

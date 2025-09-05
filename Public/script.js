@@ -1,21 +1,5 @@
-// Firebase Modular SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyDB2bm2KBo6geTRSlVHOhqhUQX-6Mozp1Y",
-  authDomain: "snaplocateproject.firebaseapp.com",
-  projectId: "snaplocateproject",
-  storageBucket: "snaplocateproject.firebasestorage.app",
-  messagingSenderId: "150513277214",
-  appId: "1:150513277214:web:e7fef8e692bd89af65510f",
-  measurementId: "G-5P19DM1V01"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { app, db } from './firebase-config.js'; // ✅ Import from config
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ==== PROFESSOR SECTION ====
 const professorSearchInput = document.getElementById("searchInput");
@@ -30,6 +14,7 @@ let expanded = false;
 
 async function loadProfessors() {
   if (!professorCardContainer) return;
+
   loader && (loader.style.display = "block");
   professorCardContainer.innerHTML = "";
   const noProfResults = document.getElementById("noResults");
@@ -52,6 +37,10 @@ async function loadProfessors() {
         // experience: data.experience || "Experienced Faculty Member"
       });
     });
+
+      window.trackEvent && window.trackEvent('professors_page_loaded', {
+    total_professors: allProfessors.length
+  });
 
     displayProfessors(allProfessors);
   } catch (error) {
@@ -93,6 +82,7 @@ function displayProfessors(professors) {
 document.querySelectorAll(".copy-btn").forEach(btn => {
   btn.addEventListener("click", function () {
     const email = this.parentElement.querySelector(".email-text").textContent.trim();
+     window.trackCardInteraction && window.trackCardInteraction('professor', 'copy_email');
     navigator.clipboard.writeText(email).then(() => {
       this.textContent = "✅";
       setTimeout(() => (this.textContent = "📋"), 1500);
@@ -112,12 +102,21 @@ document.querySelectorAll(".copy-btn").forEach(btn => {
 
 showMoreBtn?.addEventListener("click", () => {
   expanded = !expanded;
+    window.trackEvent && window.trackEvent('show_more_clicked', {
+    section: 'professors',
+    action: expanded ? 'expand' : 'collapse',
+    total_items: allProfessors.length
+  });
   displayProfessors(allProfessors);
   showMoreBtn.textContent = expanded ? "Show Less" : "Show More Professors";
 });
 
 professorSearchInput?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
+    // Track search
+  if (filter.length > 2) { // Only track searches with 3+ characters
+    window.trackSearch && window.trackSearch('professor', filter);
+  }
   const noProfResults = document.getElementById("noResults");
 
   const sorted = [...allProfessors].sort((a, b) => {
@@ -150,6 +149,7 @@ let visibleClassroomCount = 6;
 let classroomExpanded = false;
 
 async function loadClassrooms() {
+   
   classroomLoader && (classroomLoader.style.display = "block");
   try {
     const snapshot = await getDocs(collection(db, "classrooms"));
@@ -169,6 +169,10 @@ async function loadClassrooms() {
       });
     });
 
+    window.trackEvent && window.trackEvent('classrooms_page_loaded', {
+    total_classrooms: allClassrooms.length
+  });
+  
     displayClassrooms(allClassrooms);
   } catch (err) {
     console.error("Failed to load classrooms:", err);
@@ -240,6 +244,9 @@ function displayClassrooms(classrooms) {
 
 classroomSearchInput?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
+    if (filter.length > 1) {
+    window.trackSearch && window.trackSearch('classroom', filter);
+  }
 
   const sorted = [...allClassrooms].sort((a, b) => {
     const exactA = a.roomNo.toLowerCase() === filter ? -1 : 0;
@@ -259,6 +266,11 @@ refreshClassroomsBtn?.addEventListener("click", loadClassrooms);
 
 document.getElementById("showMoreBtn")?.addEventListener("click", () => {
   classroomExpanded = !classroomExpanded;
+  window.trackEvent && window.trackEvent('show_more_clicked', {
+    section: 'classrooms',
+    action: classroomExpanded ? 'expand' : 'collapse',
+    total_items: allClassrooms.length
+  });
   displayClassrooms(allClassrooms);
   document.getElementById("showMoreBtn").textContent = classroomExpanded ? "Show Less" : "Show More Classrooms";
 });
@@ -321,5 +333,10 @@ document.addEventListener("pointerdown", (e) => {
   if (clickedCard) {
     // e.preventDefault(); // stop Safari from text-selecting
     clickedCard.classList.toggle("flipped");
+
+    // Track card interaction
+    const isClassroom = clickedCard.querySelector('.card-front h3')?.textContent.includes('Room');
+    const cardType = isClassroom ? 'classroom' : 'professor';
+    window.trackCardInteraction && window.trackCardInteraction(cardType, 'flip_card');
   }
 });

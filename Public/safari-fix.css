@@ -1,10 +1,11 @@
-/* ===== Safari/iOS Flip Card Fix ===== */
+/* ===== Safari/iOS Click-Based Flip Card Fix ===== */
 @supports (-webkit-touch-callout: none) {
 
   /* Ensure perspective works */
-  .card-3d {
+  .card, .card-3d {
     perspective: 1000px;
-    -webkit-perspective: 1000px; /* Safari/iOS */
+    -webkit-perspective: 1000px;
+    cursor: pointer;
   }
 
   /* Inner container for flipping */
@@ -13,16 +14,18 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.15s ease-in-out !important;
+    transition: transform 0.6s ease-in-out !important;
     transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d; /* Safari/iOS */
+    -webkit-transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
   }
 
-  /* Trigger flip via hover or JS class */
-  .card-3d:hover .card-inner,
-  .card-3d.flip-active .card-inner {
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg); /* Safari/iOS */
+  /* ✅ ONLY click-based flipping - NO HOVER */
+  .card.flipped .card-inner,
+  .card-3d.flipped .card-inner {
+    transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
   }
 
   /* Front and back faces */
@@ -34,16 +37,16 @@
     top: 0;
     left: 0;
     backface-visibility: hidden;
-    -webkit-backface-visibility: hidden; /* Safari/iOS */
+    -webkit-backface-visibility: hidden;
   }
 
   /* Back face flipped */
   .card-back {
     transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg); /* Safari/iOS */
+    -webkit-transform: rotateY(180deg);
   }
 
-  /* Optional: prevent flicker on Safari */
+  /* Prevent flicker on Safari */
   .card-inner, .card-front, .card-back {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;

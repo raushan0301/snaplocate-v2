@@ -1,4 +1,4 @@
-import { app, db } from './firebase-config.js'; // ✅ Import from config
+import { app, db } from './firebase-config.js';
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ==== PROFESSOR SECTION ====
@@ -10,7 +10,6 @@ const showMoreBtn = document.getElementById("showMoreBtn");
 let allProfessors = [];
 let visibleCount = 6;
 let expanded = false;
-
 
 async function loadProfessors() {
   if (!professorCardContainer) return;
@@ -28,19 +27,17 @@ async function loadProfessors() {
       const data = doc.data();
       allProfessors.push({
         name: data.name || "N/A",
-        // TeacherCode: data.TeacherCode || "N/A",
         cabinNo: data.cabinNo || "N/A",
         contact: data.email || data.contact || "N/A",
         department: data.department || "N/A",
         Designation: data.designation || data.Designation || "N/A",
         specialization: data.specialization || "N/A",
-        // experience: data.experience || "Experienced Faculty Member"
       });
     });
 
-      window.trackEvent && window.trackEvent('professors_page_loaded', {
-    total_professors: allProfessors.length
-  });
+    window.trackEvent && window.trackEvent('professors_page_loaded', {
+      total_professors: allProfessors.length
+    });
 
     displayProfessors(allProfessors);
   } catch (error) {
@@ -78,31 +75,22 @@ function displayProfessors(professors) {
     `;
     professorCardContainer.appendChild(card);
   });
-// ✅ Copy Email Button
-document.querySelectorAll(".copy-btn").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const email = this.parentElement.querySelector(".email-text").textContent.trim();
-     window.trackCardInteraction && window.trackCardInteraction('professor', 'copy_email');
-    navigator.clipboard.writeText(email).then(() => {
-      this.textContent = "✅";
-      setTimeout(() => (this.textContent = "📋"), 1500);
-    }).catch(err => {
-      console.error("Failed to copy email:", err);
-    });
-  });
-});
 
+  // Setup copy buttons after cards are created
+  setTimeout(() => {
+    setupCopyButtons();
+  }, 100);
 
   if (professors.length <= visibleCount && showMoreBtn) {
     showMoreBtn.style.display = "none";
   } else {
-    showMoreBtn.style.display = "block";
+    showMoreBtn && (showMoreBtn.style.display = "block");
   }
 }
 
 showMoreBtn?.addEventListener("click", () => {
   expanded = !expanded;
-    window.trackEvent && window.trackEvent('show_more_clicked', {
+  window.trackEvent && window.trackEvent('show_more_clicked', {
     section: 'professors',
     action: expanded ? 'expand' : 'collapse',
     total_items: allProfessors.length
@@ -113,8 +101,7 @@ showMoreBtn?.addEventListener("click", () => {
 
 professorSearchInput?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
-    // Track search
-  if (filter.length > 2) { // Only track searches with 3+ characters
+  if (filter.length > 2) {
     window.trackSearch && window.trackSearch('professor', filter);
   }
   const noProfResults = document.getElementById("noResults");
@@ -141,7 +128,6 @@ const classroomSearchInput = document.getElementById("classroomSearchInput");
 const classroomCardContainer = document.getElementById("classroomCardContainer");
 const refreshClassroomsBtn = document.getElementById("refreshClassroomsBtn");
 const noClassroomResults = document.getElementById("noClassroomResults");
-
 const classroomLoader = document.getElementById("classroomLoader");
 
 let allClassrooms = [];
@@ -149,7 +135,6 @@ let visibleClassroomCount = 6;
 let classroomExpanded = false;
 
 async function loadClassrooms() {
-   
   classroomLoader && (classroomLoader.style.display = "block");
   try {
     const snapshot = await getDocs(collection(db, "classrooms"));
@@ -170,9 +155,9 @@ async function loadClassrooms() {
     });
 
     window.trackEvent && window.trackEvent('classrooms_page_loaded', {
-    total_classrooms: allClassrooms.length
-  });
-  
+      total_classrooms: allClassrooms.length
+    });
+
     displayClassrooms(allClassrooms);
   } catch (err) {
     console.error("Failed to load classrooms:", err);
@@ -180,16 +165,17 @@ async function loadClassrooms() {
     classroomLoader && (classroomLoader.style.display = "none");
   }
 }
+
 function displayClassrooms(classrooms) {
   if (!classroomCardContainer) return;
   classroomCardContainer.innerHTML = "";
 
   if (classrooms.length === 0) {
-    noClassroomResults.style.display = "block";
+    noClassroomResults && (noClassroomResults.style.display = "block");
     return;
   }
 
-  noClassroomResults.style.display = "none";
+  noClassroomResults && (noClassroomResults.style.display = "none");
 
   classrooms.forEach((room, i) => {
     const card = document.createElement("div");
@@ -200,7 +186,6 @@ function displayClassrooms(classrooms) {
       card.classList.add("hidden-room");
     }
 
-    // Helper function to render a field only if it's valid
     const renderField = (label, value) => {
       if (value && value !== "N/A" && value !== "Unknown") {
         return `<p><strong>${label}:</strong> ${value}</p>`;
@@ -208,7 +193,6 @@ function displayClassrooms(classrooms) {
       return "";
     };
 
-    // Construct front and back HTML conditionally
     const frontHTML = `
       ${renderField("LAB", room.labName)}
       ${renderField("Block", room.block)}
@@ -237,14 +221,13 @@ function displayClassrooms(classrooms) {
   if (classrooms.length <= visibleClassroomCount && showMoreBtn) {
     showMoreBtn.style.display = "none";
   } else {
-    showMoreBtn.style.display = "block";
+    showMoreBtn && (showMoreBtn.style.display = "block");
   }
 }
 
-
 classroomSearchInput?.addEventListener("input", function () {
   const filter = this.value.toLowerCase();
-    if (filter.length > 1) {
+  if (filter.length > 1) {
     window.trackSearch && window.trackSearch('classroom', filter);
   }
 
@@ -279,64 +262,96 @@ if (classroomCardContainer) {
   loadClassrooms();
 }
 
-
-
-// Highlight active link in navbar, sidebar, and footer
+// ==== NAVIGATION ACTIVE LINKS ====
 const allLinks = document.querySelectorAll("a");
-
-// Get the current file name (ignore folders like "Public/")
 let currentPath = window.location.pathname.split("/").pop() || "index.html";
 
-// If no extension, normalize to .html
 if (!currentPath.includes(".")) {
   currentPath += ".html";
 }
 
-console.log("Fixed currentPath →", currentPath);
-
 allLinks.forEach(link => {
   let href = link.getAttribute("href");
-  if (!href) return;
+  if (!href || link.querySelector("h2")) return;
 
-  // Skip logo link
-if (link.querySelector("h2")) return;
-
-  // Remove leading/trailing slashes
   let normalizedHref = href.replace(/^\/|\/$/g, "");
   if (!normalizedHref.endsWith(".html")) {
     normalizedHref += ".html";
   }
 
-  console.log("Checking:", href, "→", normalizedHref);
-
   if (normalizedHref === currentPath) {
-    console.log("✅ Match found →", href);
     link.classList.add("active");
   }
 });
 
+// ==== CLICK-ONLY CARD FLIP FUNCTIONALITY ====
+document.addEventListener("click", (e) => {
+  // Don't flip if clicking on copy button
+  if (e.target.classList.contains('copy-btn') || 
+      e.target.closest('.copy-btn')) {
+    return;
+  }
 
-
-
-
-
-// Flip cards on click (works on desktop + iOS Safari)
-
-document.addEventListener("pointerdown", (e) => {
-  const clickedCard = e.target.closest(".card-3d");
-
-  // Close other flipped cards
-  document.querySelectorAll(".card-3d.flipped").forEach(card => {
-    if (card !== clickedCard) card.classList.remove("flipped");
-  });
+  // Find the clicked card
+  const clickedCard = e.target.closest(".card") || e.target.closest(".card-3d");
 
   if (clickedCard) {
-    // e.preventDefault(); // stop Safari from text-selecting
+    // Toggle the flipped state on click only
     clickedCard.classList.toggle("flipped");
-
+    
     // Track card interaction
     const isClassroom = clickedCard.querySelector('.card-front h3')?.textContent.includes('Room');
     const cardType = isClassroom ? 'classroom' : 'professor';
     window.trackCardInteraction && window.trackCardInteraction(cardType, 'flip_card');
   }
 });
+
+// ==== COPY EMAIL FUNCTIONALITY ====
+function setupCopyButtons() {
+  document.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      
+      const email = this.parentElement.querySelector(".email-text").textContent.trim();
+      copyToClipboardSafari(email, this);
+      window.trackCardInteraction && window.trackCardInteraction('professor', 'copy_email');
+    });
+  });
+}
+
+async function copyToClipboardSafari(text, buttonElement) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      showCopySuccess(buttonElement);
+    } else {
+      // Fallback for Safari
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      if (document.execCommand('copy')) {
+        showCopySuccess(buttonElement);
+      } else {
+        throw new Error('Copy failed');
+      }
+      
+      document.body.removeChild(textArea);
+    }
+  } catch (error) {
+    console.log("Copy failed:", error);
+    alert(`Copy this email: ${text}`);
+    showCopySuccess(buttonElement);
+  }
+}
+
+function showCopySuccess(buttonElement) {
+  buttonElement.textContent = "✅";
+  setTimeout(() => (buttonElement.textContent = "📋"), 1500);
+}

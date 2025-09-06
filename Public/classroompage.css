@@ -7,6 +7,7 @@
   --light-bg: #f5f5f5;
   --dark-bg: #111;
   --white: #fff;
+   --text-light: #eee;
   --gray: #ccc;
   --light-gray: #e6f0ff;
   --radius: 12px;
@@ -141,9 +142,6 @@ img {
   font-size: 1rem;
   color: #555;
 }
-
-
-
 /* flip when JS toggles class */
 .card-3d.flipped .card-inner {
   transform: rotateY(180deg);
@@ -178,8 +176,14 @@ img {
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-   backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  transform: rotateY(0deg); /* ✅ Explicit default state */
+}
+/* ✅ ONLY click-based flipping - NO HOVER */
+.card.flipped .card-inner,
+.card-3d.flipped .card-inner {
+  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {

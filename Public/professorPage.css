@@ -9,6 +9,7 @@
   --white: #fff;
   --gray: #ccc;
   --light-gray: #e6f0ff;
+   --text-light: #eee;
   --radius: 12px;
 }
 
@@ -146,7 +147,6 @@ img {
   font-size: 1rem;
   color: #555;
 }
-
 /* ===== Card Styles ===== */
 .card-container {
   background-color: var(--accent-color);
@@ -156,22 +156,29 @@ img {
   gap: 20px;
   padding: 40px 5%;
 }
+
 .card, .card-3d {
   width: 300px;
   height: 300px;
   perspective: 1000px;
+  cursor: pointer; /* ✅ Added cursor pointer */
 }
+
 .card-3d {
   height: 200px;
 }
+
 .card-inner {
   width: 100%;
   height: 100%;
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  transform: rotateY(0deg); /* ✅ Explicit default state */
 }
-.card:hover .card-inner, .card-3d:hover .card-inner {
+/* ✅ ONLY click-based flipping - NO HOVER */
+.card.flipped .card-inner,
+.card-3d.flipped .card-inner {
   transform: rotateY(180deg);
 }
 .card-front, .card-back {

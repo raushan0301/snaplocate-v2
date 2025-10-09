@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { db } from "./firebase-config.js";
 import {
   getFirestore,
   collection,
@@ -9,19 +9,6 @@ import {
   getDoc,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyDB2bm2KBo6geTRSlVHOhqhUQX-6Mozp1Y",
-  authDomain: "snaplocateproject.firebaseapp.com",
-  projectId: "snaplocateproject",
-  storageBucket: "snaplocateproject.appspot.com",
-  messagingSenderId: "150513277214",
-  appId: "1:150513277214:web:e7fef8e692bd89af65510f"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const yearSelect = document.getElementById('yearSelect');
 const semesterSelect = document.getElementById('semesterSelect');

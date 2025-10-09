@@ -1,21 +1,5 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-
-// ----------------- FIREBASE -----------------
-// Firebase config
-const firebaseConfig = {
-  apiKey: "AIzaSyDB2bm2KBo6geTRSlVHOhqhUQX-6Mozp1Y",
-  authDomain: "snaplocateproject.firebaseapp.com",
-  projectId: "snaplocateproject",
-  storageBucket: "snaplocateproject.firebasestorage.app",
-  messagingSenderId: "150513277214",
-  appId: "1:150513277214:web:e7fef8e692bd89af65510f",
-  measurementId: "G-5P19DM1V01"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db } from "./firebase-config.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ----------------- CONSTANTS -----------------
 const ACCENTS = {

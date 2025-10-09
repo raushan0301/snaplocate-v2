@@ -53,4 +53,11 @@
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
   }
+    .message {
+    color: red !important;
+    text-align: center !important;
+    display: block;
+    position: relative;
+    z-index: 1000;
+  }
 }

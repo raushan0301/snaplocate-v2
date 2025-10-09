@@ -147,6 +147,11 @@ img {
   font-size: 1rem;
   color: #555;
 }
+.message {
+  text-align: center;
+  color: red;
+  font-size: 1.5rem;
+}
 /* ===== Card Styles ===== */
 .card-container {
   background-color: var(--accent-color);

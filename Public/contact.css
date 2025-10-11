@@ -115,7 +115,7 @@ form button:hover {
 .contact-info p {
   margin: 10px 0;
 }
-.social-links a {
+/* .social-links a {
   display: inline-block;
   margin-right: 15px;
   color: #000;
@@ -124,9 +124,17 @@ form button:hover {
 .link-style {
         color: rgb(35, 35, 216);
         cursor: pointer;
-        text-decoration: underline;
-    }
-
+        
+    } */
+.social-links a {
+  display: inline-block;
+  margin-right: 15px;
+  text-decoration: none;
+  color: #0077cc;
+}
+.social-links a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 768px) {
   .contact-content {
     flex-direction: column;

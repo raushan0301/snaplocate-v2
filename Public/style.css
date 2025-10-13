@@ -120,6 +120,7 @@ img {
   max-width: 400px;    /* instead of fixed width */
   width: 100%;         /* full width in its grid cell */
   margin: 0 auto;      /* center on small screens */
+  height: 100%;           /* ensures even height in grid */
 }
 
 .info-card h3 {

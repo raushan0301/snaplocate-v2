@@ -1,6 +1,12 @@
 // ✅ Firebase SDK Imports
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ✅ Firebase Configuration
 const firebaseConfig = {
@@ -23,25 +29,31 @@ const status = document.getElementById("formStatus");
 
 form?.addEventListener("submit", async (e) => {
   e.preventDefault();
- // Show a "sending" message
   showStatus("Sending message...", "blue");
+
   const name = document.getElementById("name")?.value.trim();
   const email = document.getElementById("email")?.value.trim();
   const message = document.getElementById("message")?.value.trim();
 
-  // Basic Validation
   if (!name || !email || !message) {
     showStatus("Please fill in all fields.", "red");
     return;
   }
 
   try {
-    // Add message to Firestore
-    await addDoc(collection(db, "messages"), {
+    // ✅ Generate a readable + unique doc ID
+    const safeName = name.toLowerCase().replace(/\s+/g, "_");
+    const uniqueId = `${safeName}_${Date.now()}`; // e.g., "john_doe_1729238123123"
+
+    const docRef = doc(db, "messages", uniqueId);
+
+    // ✅ Write data using setDoc
+    await setDoc(docRef, {
       name,
       email,
       message,
-      timestamp: serverTimestamp()
+      timestamp: serverTimestamp(),
+      read: false
     });
 
     showStatus("Message sent successfully!", "green");
@@ -51,7 +63,6 @@ form?.addEventListener("submit", async (e) => {
     showStatus("Failed to send message. Please try again later.", "red");
   }
 
-  // Clear message after 5 seconds
   setTimeout(() => {
     status.textContent = "";
   }, 5000);

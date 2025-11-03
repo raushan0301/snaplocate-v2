@@ -50,6 +50,10 @@
         "destination": "/campus-support.html"
       },
          {
+        "source": "/society",
+        "destination": "/societies.html"
+      },
+         {
         "source": "/contact",
         "destination": "/contact.html"
       }

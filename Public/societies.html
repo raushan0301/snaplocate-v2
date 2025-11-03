@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <title>Societies & Clubs</title>
+  <link rel="stylesheet" href="societies.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sidebar.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hamburger Toggle for Mobile -->
+  <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <a href="./index"><h2>SnapLocate</h2></a>
+    <a href="./index"><i class="bi bi-house-heart"></i>  Home</a>
+    <a href="./professor"><i class="bi bi-person-workspace"></i>  Professors</a>
+    <a href="/classroom"><i class="bi bi-buildings"></i>  Classrooms</a>
+    <a href="./academic"><i class="bi bi-book-half"></i>  Academic</a>
+    <a href="./academic-calendar"><i class="bi bi-calendar3"></i>  Calendar</a>
+    <a href="./hotspot"><i class="bi bi-router"></i>  Wi-Fi</a>
+    <a href="./campus-support"><i class="bi bi-envelope-open-heart"></i>  Campus-Support</a>
+    <a href="./society"><i class="bi bi-people"></i>  Society</a>
+    <a href="./contact"><i class="bi bi-telephone"></i>  Contact</a>
+    <a href="./about"><i class="bi bi-info-circle"></i>  About Us</a>
+     <!-- Tagline at bottom -->
+  <div class="sidebar-tagline">
+    <h3>Just ek click, sab kuch quick!</h3>
+  </div>
+  </aside>
+
+ <!-- Main Page Content -->
+   <div class="content">
+    <header class="navbar">
+      <div class="logo">
+        <a href="/index"><span>SnapLocate</span></a>
+      </div>
+      <nav class="nav-links">
+        <a href="/professor">Professors</a>
+        <a href="/classroom">Classrooms</a>
+        <a href="/academic">Academic</a>
+      </nav>
+    </header>
+  <!-- Header -->
+  <div class="header">
+    <div class="container">
+      <h1>🎓 Societies & Clubs</h1>
+      <p>Explore our diverse range of student organizations</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Search & Filter Section -->
+      <section class="search-section">
+        <div class="search-bar">
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="🔍 Search societies by name, objective, or president..."
+          />
+        </div>
+        
+        <div class="filter-controls">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="technical">💻 Technical</button>
+            <button class="filter-btn" data-filter="cultural">🎭 Cultural</button>
+            <button class="filter-btn" data-filter="sports">⚽ Sports</button>
+            <button class="filter-btn" data-filter="academic">📚 Academic</button>
+          </div> 
+          
+          <select id="sortBy">
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+          </select>
+          
+          <button id="resetBtn" class="btn-secondary">Reset Filters</button>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <h3 id="totalSocieties">0</h3>
+          <p>Total Societies</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="displayedSocieties">0</h3>
+          <p>Displayed</p>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <div id="loadingState" class="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Loading societies...</p>
+      </div>
+
+      <!-- Error State -->
+      <div id="errorState" class="error-message" style="display:none;">
+        <p>⚠️ Failed to load societies. Please try again later.</p>
+      </div>
+
+      <!-- Societies Grid -->
+      <section id="societiesGrid" class="societies-grid">
+        <!-- Cards will be dynamically inserted here -->
+      </section>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state" style="display:none;">
+        <h3>No societies found</h3>
+        <p>Try adjusting your search or filters</p>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="pagination">
+        <button id="prevPage" class="btn-page" disabled>← Previous</button>
+        <span id="pageInfo">Page 1 of 1</span>
+        <button id="nextPage" class="btn-page" disabled>Next →</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+         <p>&copy; 2025 SnapLocate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Society Detail Modal -->
+  <div id="societyModal" class="modal" style="display:none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <div class="modal-content" id="modalContent">
+        <!-- Dynamic content will be inserted here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="societies.js"></script>
+  <script type="module" src="sidebar.js"></script>
+</body>
+</html>

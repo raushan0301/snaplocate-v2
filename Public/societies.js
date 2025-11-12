@@ -54,51 +54,11 @@ if (text.includes("innovat") || text.includes("startup") || text.includes("entre
 }
 
 // Determine category
-function getSocietyCategory(societyName, objective) {
-  const text = (societyName + " " + (objective || "")).toLowerCase();
-
-  if (
-text.includes("tech") || text.includes("robot") || text.includes("automation") || text.includes("mechatron") ||
-text.includes("autonomous") || text.includes("embedded") || text.includes("code") || text.includes("program") ||
-text.includes("developer") || text.includes("software") || text.includes("coding") || text.includes("app") ||
-text.includes("web") || text.includes("algorithm") || text.includes("computer") || text.includes("electronics") ||
-text.includes("electrical") || text.includes("mechanical") || text.includes("civil") || text.includes("industrial") ||
-text.includes("standard") || text.includes("engineer")
-) {
-return "technical";
-}
-if (
-text.includes("cultur") || text.includes("tradition") || text.includes("heritage") || text.includes("festival") ||
-text.includes("language") || text.includes("community") || text.includes("music") || text.includes("band") ||
-text.includes("vocal") || text.includes("choir") || text.includes("orchestra") || text.includes("dance") ||
-text.includes("bhangra") || text.includes("hip hop") || text.includes("classical dance") || text.includes("drama") ||
-text.includes("theater") || text.includes("theatre") || text.includes("acting") || text.includes("film") ||
-text.includes("movie") || text.includes("cinema") || text.includes("art") || text.includes("painting") ||
-text.includes("drawing") || text.includes("sketch") || text.includes("sculpt") || text.includes("design") ||
-text.includes("photo") || text.includes("photography") || text.includes("camera") || text.includes("videography")
-) {
-return "cultural";
-}
-if (
-text.includes("sport") || text.includes("athlet") || text.includes("fitness") || text.includes("cricket") ||
-text.includes("football") || text.includes("soccer") || text.includes("basketball") || text.includes("gym") ||
-text.includes("marathon") || text.includes("run") || text.includes("yoga")
-) {
-return "sports";
-}
-if (
-text.includes("academic") || text.includes("study") || text.includes("education") || text.includes("scholar") ||
-text.includes("learn") || text.includes("seminar") || text.includes("workshop") || text.includes("research") ||
-text.includes("science") || text.includes("lab") || text.includes("physics") || text.includes("chemistry") ||
-text.includes("biology") || text.includes("astronomy") || text.includes("math") || text.includes("mathematics") ||
-text.includes("statistics") || text.includes("literature") || text.includes("writing") || text.includes("author") ||
-text.includes("poetry") || text.includes("debate") || text.includes("oratory")
-) {
-return "academic";
+function getSocietyCategory(type) {
+  if (!type) return "other";
+  return type.toLowerCase(); // returns "academic", "technical", "cultural"
 }
 
-  return "other";
-}
 
 // Load societies from Firestore
 async function loadSocieties() {
@@ -131,14 +91,14 @@ async function loadSocieties() {
     }
 
     allSocieties = snapshot.docs.map(doc => {
-      const data = doc.data();
-      console.log("📄 Society data:", data);
-      return {
-        id: doc.id,
-        ...data,
-        category: getSocietyCategory(data.societyName, data.objective)
-      };
-    });
+  const data = doc.data();
+  return {
+    id: doc.id,
+    ...data,
+    category: getSocietyCategory(data.TYPE || data.type)
+  };
+});
+
 
     filteredSocieties = [...allSocieties];
     updateStats();

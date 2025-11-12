@@ -186,15 +186,18 @@ function displayClassrooms(classrooms) {
       card.classList.add("hidden-room");
     }
 
-    const renderField = (label, value) => {
-      if (value && value !== "N/A" && value !== "Unknown") {
-        return `<p><strong>${label}:</strong> ${value}</p>`;
-      }
-      return "";
-    };
+   const renderField = (label, value) => {
+  if (value && value !== "N/A" && value !== "Unknown") {
+    return label
+      ? `<p><strong>${label}:</strong> ${value}</p>`
+      : `<p>${value}</p>`;
+  }
+  return "";
+};
+
 
     const frontHTML = `
-      ${renderField("LAB", room.labName)}
+      ${renderField("",room.labName)}
       ${renderField("Block", room.block)}
       ${room.roomNo && room.roomNo !== "N/A" ? `<h3>Room : ${room.roomNo}</h3>` : ""}
       ${renderField("Code", room.classcode)}
@@ -226,20 +229,23 @@ function displayClassrooms(classrooms) {
 }
 
 classroomSearchInput?.addEventListener("input", function () {
-  const filter = this.value.toLowerCase();
-  if (filter.length > 1) {
-    window.trackSearch && window.trackSearch('classroom', filter);
+  const rawFilter = this.value.toLowerCase();
+
+  // Remove non-alphanumeric chars for flexible matching (e.g., "b107" == "b-107")
+  const normalizedFilter = rawFilter.replace(/[^a-z0-9]/g, "");
+
+  if (rawFilter.length > 1) {
+    window.trackSearch && window.trackSearch('classroom', normalizedFilter);
   }
 
-  const sorted = [...allClassrooms].sort((a, b) => {
-    const exactA = a.roomNo.toLowerCase() === filter ? -1 : 0;
-    const exactB = b.roomNo.toLowerCase() === filter ? -1 : 0;
-    return exactB - exactA || a.roomNo.localeCompare(b.roomNo);
+  const filtered = allClassrooms.filter(room => {
+    // Join all values and normalize by removing non-alphanumeric chars
+    const normalizedRoomData = Object.values(room)
+      .join(" ")
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, ""); // 🔑 normalization
+    return normalizedRoomData.includes(normalizedFilter);
   });
-
-  const filtered = sorted.filter(room =>
-    Object.values(room).join(" ").toLowerCase().includes(filter)
-  );
 
   classroomExpanded = true;
   displayClassrooms(filtered);

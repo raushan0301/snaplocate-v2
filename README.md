@@ -1,10 +1,11 @@
-SnapLocate – Campus Navigation & Academic Companion
+📍 SnapLocate
+Campus Navigation & Academic Companion
 SnapLocate is a student-focused web application designed to simplify campus life by providing quick access to professor details, classroom locations, academic resources, campus support contacts, and Wi-Fi hotspots — all in one place.
-Built with a clean frontend + Firebase backend, SnapLocate focuses on usability, speed, and real-world student needs.
+Built with a clean frontend and Firebase backend, SnapLocate focuses on usability, speed, and real-world student needs.
 🌐 Live Demo
-🔗 Website: https://snaplocate.in 
-🚀 Features
-🧑‍🏫 Professor Directory
+🔗 Website: https://snaplocate.in
+✨ Key Features
+👨‍🏫 Professor Directory
 Search professors by name, department, or specialization
 View contact details and professional information
 Clean card-based UI with search & pagination
@@ -13,40 +14,43 @@ Locate classrooms by room number, building, floor, or type
 Supports lecture halls, labs, and tutorial rooms
 Optimized for quick lookups during class transitions
 📚 Academic Resources
-Year / Semester / Branch / Subject based filtering
+Year / Semester / Branch / Subject-based filtering
 Access:
 📄 Notes
 🧪 Lab Manuals
 📝 PYQs (MST / EST / AUXI)
 🎥 Playlists
-View count & rating system to highlight useful resources
+⭐ View count & rating system to highlight useful resources
 📞 Campus Support
 Categorized contacts (Academics, Finance, IT, Hostel, etc.)
 Hostel directory with caretaker & warden details
-Copy email feature for quick communication
+One-click copy email feature for quick communication
 📶 Campus Wi-Fi Hotspots
 List of available campus Wi-Fi networks
 One-click password copy (for authorized users)
-📊 Analytics (Privacy-Friendly)
-Page views
-Navigation tracking
-Daily visitor tracking using Firebase Analytics
+📊 Analytics
+Privacy-friendly page view & navigation tracking
+Daily visitor insights using Firebase Analytics
 🛠 Tech Stack
 Frontend
-HTML5
-CSS3
+HTML
+CSS
 JavaScript (ES Modules)
-Bootstrap Icons
-Backend / Services
-Firebase
-Firestore (database)
-Authentication
-Analytics
-Hosting
+Backend & Services
+Firebase Firestore (Database)
+Firebase Authentication
+Firebase Analytics
+Firebase Hosting
 Tools
 Git & GitHub
 Firebase CLI
 VS Code
+🔐 Security Notes
+No sensitive API keys or secrets are exposed
+Firebase configuration uses placeholder values in the repository
+Environment-specific or private data is excluded via .gitignore
+Example placeholder config:
+apiKey: "YOUR_API_KEY"
 📂 Project Structure (Simplified)
 snaplocate-v2/
 │
@@ -59,33 +63,23 @@ snaplocate-v2/
 │   ├── contact.html
 │   ├── about.html
 │   ├── *.css
-│   ├── *.js
+│   └── *.js
 │
 ├── firebase.json
 ├── firestore.rules
 ├── package.json
 ├── .gitignore
 └── README.md
-🔐 Security Notes
-Firebase API keys are not exposed in this repository
-Sensitive configuration files are ignored using .gitignore
-Environment-specific values should be added locally
-Example placeholder config:
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-};
-👨‍💻 About the Developer
+👨‍💻 Developer
 Raushan Raj
 🎓 B.Tech Computer Engineering – Thapar Institute of Engineering & Technology
 💻 Full-Stack Web Developer
 🔐 Interested in Security, Scalable Systems & Real-World Applications
-🔗 LinkedIn: https://www.linkedin.com/in/raushan-raj-3a7740243
-🤝 Contributions
-This project is currently maintained by a solo developer.
-Suggestions, feedback, and improvements are welcome via issues or pull requests.
-📜 License
-This project is open for learning and demonstration purposes.
-For reuse or deployment, please provide proper credit.
+🔗 LinkedIn:
+https://www.linkedin.com/in/raushan-raj-3a7740243
+🤝 Contribution & Usage
+This project is currently maintained by a solo developer
+Suggestions, feedback, and improvements are welcome via Issues
+Open for learning, demonstration, and academic use
+Please give proper credit if reused
 ⭐ If you find SnapLocate useful, consider starring the repository!
